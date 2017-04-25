@@ -1,0 +1,19 @@
+{
+  "name": "node-api",
+  "version": "0.0.0",
+  "description": "restful api hw",
+  "main": "expressServer.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "restful"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "*",
+    "express": "*",
+    "mongoose": "^4.9.5"
+  }
+}

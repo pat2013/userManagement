@@ -1,0 +1,37 @@
+<div ng-controller="userCtrl">
+    <div class="w3-container">
+        <h3>Users</h3>
+        <input class="w3-input w3-border col-md-2" type="text" ng-model="searchName" placeholder="Enter To search">
+
+        <table class="w3-table w3-bordered w3-striped">
+            <tr>
+                <th>Edit</th>
+                <th>Delete</th>
+                <th ng-click="sortBy('fName')">
+                    Frist Name
+                </th>
+                <th ng-click="sortBy('lName')"> Last Name
+                </th>
+                <th>Title</th>
+                <th>Sex</th>
+                <th ng-click="sortBy('age')">Age
+                </th>
+            </tr>
+            <tr ng-repeat="user in filtered = users | orderBy:propertyName:reverse | filter: searchName | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
+                <td>
+                    <a href="#/edit/{{user._id}}"><button class="w3-btn w3-ripple">&#9998; Edit</button></a>
+                </td>
+                <td>
+                    <button class="w3-btn w3-ripple" ng-click="deleteUser(user._id)">&#10006; Delete</button></a>
+                </td>
+                <td>{{ user.fName }}</td>
+                <td>{{ user.lName }}</td>
+                <td>{{ user.title }}</td>
+                <td>{{ user.sex}}</td>
+                <td>{{ user.age}}</td>
+            </tr>
+        </table>
+        <pagination page="currentPage" max-size="noOfPages" ng-model="noOfPages" total-items="totalItems" items-per-page="entryLimit" ng-show="noOfPages > 1"></pagination>
+        <br>
+        <a href="#/add"><button class="w3-btn w3-green w3-ripple">&#9998; Create New User</button></a>
+    </div>
